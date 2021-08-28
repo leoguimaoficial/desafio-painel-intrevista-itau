@@ -6,10 +6,10 @@
 [GitHub](https://github.com/leoguimaoficial)
 ## **Desafio Cadastro Pessoal - Atração**
 
-Criar um formulario para registrar dados pessoais
+Criar um formulário para registrar dados pessoais
 
 ### **Implementação**
-* Projeto implementado com HTML5, e JavaScript.
+* Projeto implementado com HTML5 e JavaScript.
 * Utilização das normas de acessibilidade W3C.
 * Campos obrigatórios definidos com required do HTML5.
 * O select foi utilizado para o sexo, com duas opções.
