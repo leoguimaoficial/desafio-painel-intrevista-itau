@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>--Formulário Cadastro</title>
+<meta charset="utf-8" />
+    <script>
+function limpa_formulário_cep() {
+            //Limpa valores do formulário de cep.
+            document.getElementById('rua').value=("");
+            document.getElementById('bairro').value=("");
+            document.getElementById('cidade').value=("");
+            document.getElementById('uf').value=("");
+    }
+
+    function meu_callback(conteudo) {
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('rua').value=(conteudo.logradouro);
+            document.getElementById('bairro').value=(conteudo.bairro);
+            document.getElementById('cidade').value=(conteudo.localidade);
+            document.getElementById('uf').value=(conteudo.uf);
+        } //end if.
+        else {
+            //CEP não Encontrado.
+            limpa_formulário_cep();
+            alert("CEP não encontrado.");
+        }
+    }
+        
+    function pesquisacep(valor) {
+
+        //Nova variável "cep" somente com dígitos.
+        var cep = valor.replace(/\D/g, '');
+
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+
+            //Valida o formato do CEP.
+            if(validacep.test(cep)) {
+
+                //Preenche os campos com "..." enquanto consulta webservice.
+                document.getElementById('rua').value="...";
+                document.getElementById('bairro').value="...";
+                document.getElementById('cidade').value="...";
+                document.getElementById('uf').value="...";
+
+                //Cria um elemento javascript.
+                var script = document.createElement('script');
+
+                //Sincroniza com o callback.
+                script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+                //Insere script no documento e carrega o conteúdo.
+                document.body.appendChild(script);
+
+            } //end if.
+            else {
+                //cep é inválido.
+                limpa_formulário_cep();
+                alert("Formato de CEP inválido.");
+            }
+        } //end if.
+        else {
+            //cep sem valor, limpa formulário.
+            limpa_formulário_cep();
+        }
+    };
+
+function Enviar() {
+   // retorna true se confirmado, ou false se cancelado
+   if (confirm('Tem certeza que quer enviar este formulário?')){
+    var nome = document.getElementById("nome");
+
+    if (nome.value != "") {
+        alert('Obrigado  ' + nome.value + ' os seus dados foram enviados com sucesso');
+    }
+
+}}function limpar(){ 
+   // Mensagem para limpar os dados
+   return confirm('Você tem certeza que deseja limpar todos os dados deste formulário?');
+}
+
+</script>
+</head>
+
+<body>
+<header>
+<h1>Preencha o formulário para efetuar o cadastro</h1>
+<p>Campos obrigatórios estão marcados com *. </p>
+</header>
+<main>
+<form name="register_form">
+<fieldset>
+    <legend>Dados pessoais:</legend>
+      <label>Nome *:
+        <input name="nome" type="text" id="nome" placeholder="Digite seu nome completo" required="required" /></label><br />
+<label>CPF *:
+        <input name="cpf" type="text" id="cpf" placeholder="Digite um CPF válido" required="required" /></label><br />
+<label>RG:
+        <input name="rg" type="text" id="rg" placeholder="Seu RG" /></label><br />
+<label for="sexo">Sexo:</label> 
+ <select id="sexo">
+ <option>Selecione</option>
+ <option>Masculino</option>
+ <option>Feminino</option>
+ </select>
+</fieldset>
+   <br>
+    <fieldset>
+    <legend>Endereço</legend>    
+<label>Cep:
+        <input name="cep" type="text" id="cep" value="" size="10" maxlength="9"
+               onblur="pesquisacep(this.value);" /></label><br />
+        <label>Endereço *:
+        <input name="rua" type="text" id="rua" required="required" size="60" /></label><br />
+<label>Número *:
+        <input name="numero" type="number" id="numero" required="required" /></label><br />
+        <label>Bairro:
+        <input name="bairro" type="text" id="bairro" size="40" /></label><br />
+        <label>Cidade:
+        <input name="cidade" type="text" id="cidade" size="40" /></label><br />
+        <label>Estado:
+        <input name="uf" type="text" id="uf" size="2" /></label><br />
+<label>Telefone Fixo:
+        <input name="fixo" type="tel" id="fixo" placeholder="Digite seu telefone fixo"  /></label><br />
+<label>Telefone Celular *:
+        <input name="cel" type="tel" id="cel" required="required" placeholder="Digite seu celular com DDD"  /></label><br />
+
+  <input type="submit" class="enviar" onclick="Enviar();" value="Enviar" />
+<input type="reset" value="Limpar Dados" onclick="limpar();" />
+</form>
+</main>
+<footer>
+<p>Formulário desenvolvido com HTML e JavaScript</p>
+  <ul>
+    <li><a href="https://www.linkedin.com/in/leonardo-guimaraes-3191751ab/">Linkedin</a>
+    </li>
+<li><a href="https://github.com/leoguimaoficial">GitHub</a>
+    </li>
+</ul>
+</body>
+</html>
