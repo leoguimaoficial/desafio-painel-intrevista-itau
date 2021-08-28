@@ -2,8 +2,8 @@
 
 ### **Autor**
  Leonardo Guimarães da Silva
-[LinkedIn] (https://www.linkedin.com/in/leonardo-guimaraes-3191751ab/)
-[GitHub] (https://github.com/leoguimaoficial)
+[LinkedIn](https://www.linkedin.com/in/leonardo-guimaraes-3191751ab/)
+[GitHub](https://github.com/leoguimaoficial)
 ## **Desafio Cadastro Pessoal - Atração**
 
 Criar um formulario para registrar dados pessoais
@@ -44,7 +44,7 @@ Criar um formulario para registrar dados pessoais
 2. Estilização do site (CSS) básico
 3. Disponibilizar o link do github do projeto bem descrito quanto às funcionalidades, implementações relevantes e links de pesquisas
 
-### **Orientaçãoes**
+### **Orientações**
 
 - O desafio é individual
 - Não usar frameworks de estilo como Bootstrap, Google Material e demais.
